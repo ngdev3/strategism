@@ -34,7 +34,7 @@ class Auth extends CI_Controller {
     */
 	public function index()
 	{
-            if($this->session->userdata('isLogin') == 'yes'){       	
+           if($this->session->userdata('isLogin') == 'yes'){       	
                 redirect(base_url('admin/dashboard'));
             }else{
                
@@ -71,26 +71,31 @@ class Auth extends CI_Controller {
                 $password   =   $this->input->post('password',true); 
                 
                 $rs_data    =   $this->Auth_mod->login_authorize();  
-                               	
+                                   
+              // pr($rs_data); die;
 				if($rs_data['status']=="success"){
                  
                    $this->session->set_userdata("userinfo",$rs_data['result']);   
                    $this->session->set_userdata("isLogin",'yes'); 
 				   $this->session->set_userdata("user_type",$rs_data['result']->user_type); 
                   
-                   $email_enc   =   custom_encryption($email,'ak!@#s$on!','encrypt');
-                   $password_enc   =   custom_encryption($password,'ak!@#s$on!','encrypt');
-                   if($remember) // set remember username and password in cookie 
-                   {
-                        setcookie('fs_email',$email_enc,time()+(86400 * 30),"/");
-                        setcookie('fs_password',$password_enc,time()+(86400 * 30),"/");
-                        setcookie('fs_remember',$remember,time()+(86400 * 30),"/");
+                //    $email_enc   =   custom_encryption($email,'ak!@#s$on!','encrypt');
+                //    $password_enc   =   custom_encryption($password,'ak!@#s$on!','encrypt');
+                //    if($remember) // set remember username and password in cookie 
+                //    {
+                //         setcookie('fs_email',$email_enc,time()+(86400 * 30),"/");
+                //         setcookie('fs_password',$password_enc,time()+(86400 * 30),"/");
+                //         setcookie('fs_remember',$remember,time()+(86400 * 30),"/");
 
-                   }else{
-                        setcookie('fs_email','',time()+(86400 * 30),"/");
+                //    }else{
+                //         setcookie('fs_email','',time()+(86400 * 30),"/");
+                //         setcookie('fs_password','',time()+(86400 * 30),"/");
+                //         setcookie('fs_remember',$remember,time()+(86400 * 30),"/");
+                //    }
+
+                setcookie('fs_email','',time()+(86400 * 30),"/");
                         setcookie('fs_password','',time()+(86400 * 30),"/");
                         setcookie('fs_remember',$remember,time()+(86400 * 30),"/");
-                   }
                   
 					if($rs_data['result']->user_type== 1){
 							redirect(base_url('admin/dashboard'));
@@ -116,7 +121,7 @@ class Auth extends CI_Controller {
             
                 }else{
 
-                    $data['title'] = 'Track (The Rest Accounting Key) || Login';
+                    $data['title'] = Project;
                     $this->load->view('auth/login', $data);
                 }
             }else{
@@ -124,7 +129,7 @@ class Auth extends CI_Controller {
                     redirect(base_url('admin/dashboard'));
                 }else{
                
-                    $data['title'] = 'Track (The Rest Accounting Key) || Login';
+                    $data['title'] = Project;
                     $this->load->view('auth/login', $data);
                 }
             }
@@ -156,7 +161,39 @@ class Auth extends CI_Controller {
        return $token;
    }
 
+public function emailsend(){
+    
+    $this->load->library('Sendmail');
+    $mail = new PHPMailer(); // create a new object
+    $mail->IsSMTP(); // enable SMTP
+    $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+    $mail->SMTPAuth = true; // authentication enabled
+    $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
+    $mail->Host = "smtp.gmail.com";
+    $mail->Port = 587; // or 587
+    $mail->IsHTML(true);
+    $mail->Username = "shobhit@strategisminc.com";//ankit2@thealternativeaccount.com    OR   test.thealternativeaccount@gmail.com";
+    $mail->Password = "welcomeshobhit123";                 //developer@thealternativeaccount1
+    $mail->Subject = 'Testing New Email';
+    //$mail->Body = "kkhkjhk";
+    $mail->SetFrom('shobhit@strategisminc.com','System Generated Email',1);
+    $mail->AddAddress('shobhit@strategisminc.com');
+    //$mail->AddAttachment('./uploads/invoice_slips/invoice_number.pdf');
+    //$msg = $this->load->view('invoice_data/pdfs','',true);
+    $mail->Body = "Testing";
+    
+    if($mail->Send()){
+        return TRUE;
+    
+    }else{
+        return FALSE;
+    
+    }
+    echo $email->print_debugger();
 
+
+
+}
         public function forgot(){
            $token   =   $this->getToken(50) ;
             if($this->session->userdata('isLogin') == 'yes') {       	

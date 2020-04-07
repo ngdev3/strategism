@@ -102,8 +102,8 @@ if (!defined('K_PATH_IMAGES')) {
 
 if (!defined('PDF_HEADER_LOGO')) {
 	$tcpdf_header_logo = '';
-	if (@file_exists(K_PATH_IMAGES.'kyi_logo.png')) {
-		$tcpdf_header_logo = 'kyi_logo.png';
+	if (@file_exists(K_PATH_IMAGES.'op.png')) {
+		$tcpdf_header_logo = 'op.png';
 	}
 	define ('PDF_HEADER_LOGO', $tcpdf_header_logo);
 }
@@ -145,7 +145,7 @@ if (!defined('PDF_AUTHOR')) {
 }
 
 if (!defined('PDF_HEADER_TITLE')) {
-	define ('PDF_HEADER_TITLE', 'KYI');
+	define ('PDF_HEADER_TITLE', 'efefef');
 }
 
 if (!defined('PDF_HEADER_STRING')) {

@@ -42,7 +42,7 @@
                                  <h5 class="lh-1 mB-0 logo-text"><?php 
                                  
                                  if($_SESSION['user_type'] == 1){
-                                     echo "Administrator";
+                                    // echo "Administrator";
                                  }else 	if($_SESSION['user_type'] == 2){
                                     echo "Advertiser";
                                  }else 	if($_SESSION['user_type'] == 3){
@@ -194,6 +194,7 @@ $(function() {
 <!-- END PAGE LEVEL PLUGINS -->
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-dropdowns.js"></script>
 <script src="<?php echo base_url(); ?>assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/moment.min.js"></script>
 
    </body>
 </html>

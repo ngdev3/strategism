@@ -31,7 +31,7 @@ $password_decr	=	custom_encryption($password,'ak!@#s$on!','decrypt');
                                 <div class="col-md-6 col-md-offset-3">  
                                     <div class="widget-login-title">
                                         <div class="logo">
-                                         <img src="<?= base_url() ?>assets/images/login_logo.png"/>
+                                         <img height="50" width="50" src="<?= base_url() ?>assets/images/login_logo.png"/>
                                         </div>
                                     </div><!-- Widget title -->
                                     <div class="account-form">

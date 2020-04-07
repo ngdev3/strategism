@@ -10,17 +10,14 @@ if(!empty($_SESSION['user_type'])){
 <ul class="sidebar-menu scrollable pos-r">
 	<li class="nav-item mT-30"><a class="sidebar-link" href="<?= base_url('admin/dashboard')?>" default><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
 	<li class="nav-item dropdown <?php if($uri1 == 'master'){echo 'open';} ?>">
-		<a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-red-500 ti-files"></i> </span><span class="title">Masters</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
+		<a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-red-500 ti-files"></i> </span><span class="title">Masters Settings</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
 		<ul class="dropdown-menu">
-		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'state'){echo 'btn_active';} ?>" href="<?= base_url('master/state')?>">State Master</a></li>
-		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'city'){echo 'btn_active';} ?>" href="<?= base_url('master/city')?>">City Master</a></li>
-		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'quality'){echo 'btn_active';} ?>" href="<?= base_url('master/quality')?>">Quality Master</a></li>
-		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'purchaser'){echo 'btn_active';} ?>" href="<?= base_url('master/purchaser')?>">Purchaser Master</a></li>
-		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'site'){echo 'btn_active';} ?>" href="<?= base_url('master/site')?>">Site Master</a></li>
-		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'seller'){echo 'btn_active';} ?>" href="<?= base_url('master/seller')?>">Seller Master</a></li>
-		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'reason'){echo 'btn_active';} ?>" href="<?= base_url('master/reason')?>">Account Reason</a></li>
-		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'tax'){echo 'btn_active';} ?>" href="<?= base_url('master/tax')?>">Tax Setting</a></li>
-		
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'payment_terms'){echo 'btn_active';} ?>" href="<?= base_url('master/payment_terms')?>">Payment Terms</a></li>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'end_clients'){echo 'btn_active';} ?>" href="<?= base_url('master/end_clients')?>">End Clients</a></li>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'clients'){echo 'btn_active';} ?>" href="<?= base_url('master/clients')?>">Clients</a></li>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'employee'){echo 'btn_active';} ?>" href="<?= base_url('master/employee')?>">Employee</a></li>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'consultant'){echo 'btn_active';} ?>" href="<?= base_url('master/consultant')?>">Consultants</a></li>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'invoice'){echo 'btn_active';} ?>" href="<?= base_url('master/invoice')?>">Invoice</a></li>
 		</ul>
 	</li>
 

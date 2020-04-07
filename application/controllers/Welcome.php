@@ -20,6 +20,6 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('invoice_data/pdfs');
+		$this->load->view('dd');
 	}
 }

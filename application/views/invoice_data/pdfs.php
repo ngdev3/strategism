@@ -1,176 +1,121 @@
 <table style="font-size:10px;">
 		<tbody>
-		<?php //pr($result_pdf)?>
+		<?php ?>
+		
 			<tr>
-				<td align="right">Tax Invoice</td>
-			</tr>
-			<tr>
-				<td align="left">KYI Soft Solutions Pvt Ltd</td>
+				<td align="left">Strategism INC.</td>
 			</tr>
 			<tr>
 				<td>
 					<table>
 						<tbody>
-							<tr>
-								<td colspan="5">
-									<table>
-										<tbody>
-											<tr><td>B-58, 2nd Floor, Sector-64, Noida,<br>(U.P.) 201301</td></tr>
-											<tr><td><strong>contact:</strong> +91 9650539090</td></tr>
-											<tr><td><strong>Telephone: </strong> 0120-4268187</td></tr>
-											<tr><td><strong>Email:</strong>accounts@kyisolutions.com </td></tr>
-											<tr><td><strong>Website:</strong> www.kyisolutions.com</td></tr>
-											<tr><td><strong>GSTIN: 09AAGCK4564L1Z0</strong></td></tr>
-											<tr><td><strong>PAN NO.: AAGCK4564L</strong></td></tr>
-										</tbody>
-									</table>
-								</td>
-								<td colspan="5">
-									<table>
-										<tbody>
-											<tr>
-												<td style="border-top:1px solid #000;border-left:1px solid #000;"><strong> Invoice Number </strong></td>
-												<td style="border-top:1px solid #000;border-right:1px solid #000;" align="right"> KYI/SOFT/2017-18/00<?php echo$result_pdf->id; ?> </td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"><strong> Invoice Date </strong></td>
-												<td style="border-right:1px solid #000;" align="right"><?php echo 'hi' ?></td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;" bgcolor="#808080" style="color:#fff;"> Invoice To: </td>
-												<td style="border-right:1px solid #000;" bgcolor="#808080" style="color:#fff;" align="right">&nbsp;</td>
-											</tr>
-											
-											<tr>
-												<td style="border-left:1px solid #000;"><strong> Company Name </strong> </td>
-												<td style="border-right:1px solid #000;" align="right"><?php echo ucfirst($result_pdf->seller_name); ?></td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"> Address </td>
-												<td style="border-right:1px solid #000;" align="right"><?php echo ucfirst($result_pdf->seller_address); ?></td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;">&nbsp; </td>
-												<td style="border-right:1px solid #000;" align="right">&nbsp;</td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"><strong> GSTIN </strong></td>
-												<td style="border-right:1px solid #000;" align="right"><?php echo $result_pdf->seller_gst_no; ?></td>
-											</tr>
-											<!--<tr>
-												<td style="border-left:1px solid #000;"> State : </td>
-												<td style="border-right:1px solid #000;" align="right">&nbsp;</td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;border-bottom:1px solid #000"><strong> State Code : </strong></td>
-												<td style="border-right:1px solid #000;border-bottom:1px solid #000" align="right">&nbsp;</td>
-											</tr>-->
-										</tbody>
-									</table>
-								</td>
-							</tr>
 							
-
 							<tr>
-								<td border="1" width="32" height="30"> S. No </td>
-								<td border="1" width="150"> Quality </td>
-								<td border="1" width="80"> HSN/SAC Code </td>
-								<td border="1" width="50"> UOM </td>
-								<td border="1" width="120"> Rate </td>
-								<td border="1" width="191"> Amount </td>
-							</tr>
-							<tr>
-								<td border="1" height="25"> 1 </td>
-								<td border="1"> <?php echo $result_pdf->quality_name?> </td>
-								<td border="1"> 998361 </td>
-								<td border="1"> 998361 </td>
 								
-								<td border="1"> <?php echo $result_pdf->seller_rate?> </td>
-								<td border="1"> <?php echo $result_pdf->seller_amount ?> </td>
-							</tr>
-							<tr>
-								<td border="1" height="25"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-							</tr>
-							<tr>
-								<td border="1" height="25"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-							</tr>
-							<tr>
-								<td border="1" height="25"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-							</tr>
-							<tr>
-								<td border="1" height="25"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-								<td border="1"> &nbsp; </td>
-							</tr>
-							
-							<tr>
-								<td colspan="4">
+								<td colspan="5" align="left">
 									<table>
 										<tbody>
-											<tr>
-												<td colspan="3">  </td>
-											</tr>
-											<tr>
-												<td colspan="2">
+											<tr><td>39355 California St,Suite 300,Fremont CA, 94538, USA</td></tr>
+											<tr><td><strong>Email:</strong>accounts@strategisminc.com </td></tr>
+											<tr><td><strong>Website:</strong> www.strategisminc.com</td></tr>
+										</tbody>
+									</table>
+								</td>
+							
+								
+							</tr>
+							<tr>
+								<td> &nbsp; </td>
+								<td> &nbsp; </td>
+							</tr>
+							<tr>
+												<td colspan="12">
 													<table>
 														<tbody>
 															<tr>
-																<td border="1" bgcolor="#808080" height="20" style="color:#fff;">
-																	Amount in Words :
+																<td  width="100%" border="1" bgcolor="#808080" height="20" style="color:#fff;">
+																	Bill To :
 																</td>
 															</tr><tr>
 																<td border="1">
-																<?php 
-																// $igst = $result_pdf->tax_amount;
-																// $amount = $result_pdf->total_balance;
-																// $igst_amount = ($amount * $igst)/100;
-																// $total_amount_after_gst = $igst_amount + $amount;
-																
-																
-																@$rst = getIndianCurrency($result_pdf->gst_amount);
-																echo "<b>".$rst."</b>"; 
-																?>
-																	
+																<?php echo $client_address.' '.$client_zipcode; ?>
 																</td>
 															</tr>
 														</tbody>
 													</table>
 												</td>
 											</tr>
+							<tr>
+								<td> &nbsp; </td>
+								<td> &nbsp; </td>
+							</tr>
+
+							<tr>
+								<td border="1" width="43" height="30" style="background-color:#a8caff;color:#000">Invoice </td>
+								<td border="1" width="150" style="background-color:#a8caff;color:#000"> Date </td>
+								<td border="1" width="80" style="background-color:#a8caff;color:#000"> Total Due </td>
+								<td border="1" width="150" style="background-color:#a8caff;color:#000"> Due Date </td>
+								<td border="1" width="100" style="background-color:#a8caff;color:#000"> Term </td>
+								<td border="1" width="101" style="background-color:#a8caff;color:#000"> Enclosed </td>
+							</tr>
+							<tr>
+								<td border="1" height="25"> <?= $invoice_index?> </td>
+								<td border="1">  <?php 
+								$middle = strtotime($start_date);             // returns bool(false)
+								$new_date = date('m/d/Y', $middle);            
+								
+								$middle = strtotime($end_date);             // returns bool(false)
+								$end_new_date = date('m/d/Y', $middle);            
+								
+								echo $new_date." To ".$end_new_date
+								?>  </td>
+								<td border="1"> <?= $due_amount ?> </td>
+								<td border="1"> <?php 
+								$middle = strtotime($due_date);             // returns bool(false)
+								$due_date = date('m/d/Y', $middle);            
+								echo $due_date;
+								?> </td>
+								
+								<td border="1"> Net <?= $term_days; ?> </td>
+								<td border="1"> <?= strtoupper($enclosed_type) ?> </td>
+							</tr>
+							<tr>
+								<td> &nbsp; </td>
+								
+							</tr>
+							<tr>
+								<td border="1" width="150" height="30" style="background-color:#7eaffc;color:#000">Activity </td>
+								<td border="1" width="48" style="background-color:#a8caff;color:#000"> QTY </td>
+								<td border="1" width="94" style="background-color:#a8caff;color:#000"> Rate (Per Hour) </td>
+								<td border="1" width="150" style="background-color:#a8caff;color:#000"> Amount </td>
+							</tr>
+							<tr>
+								<td border="1" height="25"> <?php echo "Consulting: ".$emp_name.' IT Consultant ('.$skill_name." )"?>  </td>
+								<td border="1"> <?= $hours ?> Hrs  </td>
+								<td border="1"> $<?= $bill_rate?> </td>
+								<td border="1"> <?= $due_amount?> </td>
+								
+							</tr>
+							
+							
+							<tr>
+								<td colspan="6">
+									<table>
+										<tbody>
 											<tr>
-												<td> &nbsp; </td>
+												<td colspan="6">  </td>
 											</tr>
 											<tr>
-												<td colspan="2">
+												<td colspan="6">
 													<table>
 														<tbody>
 															<tr>
-																<td border="1" bgcolor="#808080" height="20" style="color:#fff;">
-																	Banking Details
+																<td border="1" bgcolor="#383838" height="20" style="color:#fff;">
+																	<strong> Balance Due </strong>
 																</td>
 															</tr>
-															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;">	Bank: xxx</td></tr>
-															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;" border="">	Account Type:&nbsp;&nbsp; Current Account </td></tr>
-															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;" border="">	Account Number:xxx </td></tr>
-															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;border-bottom:1px solid #000;">	IFSC Code: xxx</td></tr>
+															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;">	Total Due Amount :  <?= $due_amount?> </td></tr>
+															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;border-bottom:1px solid #000;">	</td></tr>
 														</tbody>
 													</table>
 												</td>
@@ -179,135 +124,36 @@
 											<tr> <td> &nbsp;</td> </tr>
 											
 											<tr>
-												<td colspan="2">
+												<td colspan="6">
 													<table>
 														<tbody>
 															<tr>
-																<td border="1" bgcolor="#808080" height="20" style="color:#fff;">
-																	T & C
+																<td  >
+																	
 																</td>
 															</tr><tr>
-																<td border="1">
-																	All disputes are subject to GB Nagar Court Jurisdiction.
+																<td >
+																
 																</td>
 															</tr>
 														</tbody>
 													</table>
 												</td>
 											</tr>
-											<tr> <td> &nbsp; </td></tr>
-											<tr>
-												<td colspan="2">
-													<table>
-														<tbody>
-															<tr>
-																<td border="1" bgcolor="#808080" height="20" style="color:#fff;">
-																	Invoice Status
-																</td>
-															</tr>
-															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;"> Invoice Status: <?php echo $result_pdf->status ?> </td></tr>
-															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;" border="">	Invoice Due Date:<?php echo view_date_format($result_pdf->created_date) ?> </td></tr>
-															<tr><td style="border-left:1px solid #000; border-right:1px solid #000;border-bottom:1px solid #000;">	Payment Date:<?php echo view_date_format($result_pdf->created_date) ?> </td></tr>
-														</tbody>
-													</table>
-												</td>
-											</tr>
+											
 											
 										</tbody>
 									</table>
 								</td>
-								<td colspan="2">
-									<table>
-										<tbody>
-											<tr>
-												<td style="border-top:1px solid #000;border-left:1px solid #000;"> Subtotal </td>
-												<td style="border-top:1px solid #000;border-right:1px solid #000;" align="right"> <?php echo "Rs.". $result_pdf->gst_amount ."/-"?> </td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"> Discount </td>
-												<td style="border-right:1px solid #000;" align="right"> Rs. 0.00</td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"> Total Amount Before GST </td>
-												<td style="border-right:1px solid #000;" align="right"> <?php echo "Rs.". $result_pdf->seller_amount ."/-"?> </td>
-											</tr>
-											
-											<tr>
-												<td style="border-left:1px solid #000;"> CGST @ <?php echo  $result_pdf->cgst?> %  </td>
-												<td style="border-right:1px solid #000;" align="right"> <?php
-												
-												echo "Rs." .($result_pdf->gst_amount) ."/-" ;
-												?></td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"> SGST @ <?php echo  $result_pdf->sgst?> % </td>
-												<td style="border-right:1px solid #000;" align="right"> <?php
-
-												echo "Rs." .($result_pdf->gst_amount)  ."/-";
-												?> </td>
-											</tr>
-										
-											<tr>
-												<td style="border-left:1px solid #000;"> GST Payble on Reverse Charge </td>
-												<td style="border-right:1px solid #000;" align="right"> &nbsp; </td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"> &nbsp; </td>
-												<td style="border-right:1px solid #000;" align="right">&nbsp;</td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"> Total Amount after GST </td>
-												<td style="border-right:1px solid #000;" align="right"> <?php 
-												echo "Rs.".($result_pdf->gst_amount)  ."/-";?> </td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;"> &nbsp; </td>
-												<td style="border-right:1px solid #000;" align="right">&nbsp;</td>
-											</tr>
-											<tr>
-												<td style="border-left:1px solid #000;border-bottom:1px solid #000"> Rounded Off Value </td>
-												<td style="border-right:1px solid #000;border-bottom:1px solid #000" align="right"> <?php echo "Rs.".round($result_pdf->gst_amount)."/-";?> </td>
-											</tr>
-											<tr>
-												<td> &nbsp; </td>
-												<td> &nbsp; </td>
-											</tr>
-											<tr>
-												<td> &nbsp; </td>
-												<td> &nbsp; </td>
-											</tr>
-											<tr>
-												<td> &nbsp; </td>
-												<td> &nbsp; </td>
-											</tr>
-											<tr>
-												<td> &nbsp; </td>
-												<td> &nbsp; </td>
-											</tr>
-											<tr>
-												<td> &nbsp; </td>
-												<td> &nbsp; </td>
-											</tr>
-											<tr>
-												<td> &nbsp; </td>
-												<td> &nbsp; </td>
-											</tr>
-											<tr>
-												<td> &nbsp; </td>
-												<td> &nbsp; </td>
-											</tr>
-											<tr>
-												<td colspan="2"><center> For KYI Soft Solutions Pvt Ltd </center></td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
+								
+								
 							</tr>
 							
 							
 						</tbody>
 					</table>
 				</td>
+				<div style="color:blue" >Thank you for your Business. For any questions on this invoice please contact accounts@strategisminc.com </div>
 			</tr>
 		</tbody>
 		</table>

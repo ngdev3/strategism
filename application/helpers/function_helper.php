@@ -550,11 +550,7 @@ if (!function_exists('_show404')) {
 if (!function_exists('custom_encryption')) {
 
     function custom_encryption($string, $key, $action) {  //echo die($action);
-        if ($action == 'encrypt')
-            return base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $string, MCRYPT_MODE_CBC, md5(md5($key))));
-        elseif ($action == 'decrypt')
-            return rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($string), MCRYPT_MODE_CBC, md5(md5($key))), "\0");
-    }
+     }
 
 }
 /* End of Function */
@@ -754,7 +750,7 @@ if (!function_exists('_sendMailPhpMailer')) {
                 pr($CI->email->send());
             pr(error_get_last());
 
-            //die;
+            die;
             if (true) {
                 return TRUE;
             } else {
@@ -784,83 +780,17 @@ if (!function_exists('_sendMailOrderConfirmPhpMailer')) {
     function _sendMailOrderConfirmPhpMailer($email_data,$order_template_data) {
         $CI = &get_instance();
         $isCISendmail   =   $CI->config->item('sendmailCI');
-        if($isCISendmail){// mail send by CI sendmail
-            
-            $config['protocol'] = 'sendmail';
-            $config['mailpath'] = '/usr/sbin/sendmail';
-            $config['charset']  = 'iso-8859-1';
-            $config['wordwrap'] = true;
-            
-            $CI->email->set_mailtype("html");
-            $CI->email->initialize($config);
-            $CI->email->from($email_data['from'],ucwords($email_data['sender_name']));
-
-            if(@$email_data['to']!=''){
-                $CI->email->to(@$email_data['to']); 
-            }
-            
-            if(@$email_data['cc']!=''){
-                $CI->email->cc(@$email_data['cc']);
-            }
-        
-            if(@$email_data['bcc']!=''){
-                $CI->email->bcc(@$email_data['bcc']); 
-            }
-        
-            $i=0;
-            if(@$email_data['file']!=''){
-                if(is_array(@$email_data['file']) && count(@$email_data['file'])>0){
-                    $arr_files   =   array();
-                    $arr_files   =   @$email_data['file'];
-                    $arr_files_name   =   @$email_data['file_name'];
-                    foreach($arr_files as $file){
-                        $CI->email->attach($file,'attachment',$arr_files_name[$i]);
-                        $i++;
-                    }
-                
-                }else{
-                    
-                    $CI->email->attach($email_data['file'],'attachment',@$email_data['file_name']);  
-                }
-            
-            }
-            
-            $CI->email->subject(ucfirst($email_data['subject']));
-            $data['message']    =   $email_data['message'];
-			$data['order_details']   =   $order_template_data['order_details'];
-			$data['cart_data']   =   $order_template_data['cart_data'];
-			
-            if(isset($email_data['cmp_logo'])){
-                $data['cmp_logo']   =   @$email_data['cmp_logo'];
-            }else{
-                $data['cmp_logo']   =   @currentuserinfo()->cmp_logo;
-            }
-       
-            $msg = $CI->load->view('email_template/email_order_template', $data, true);
-            $CI->email->message($msg);
-
-            if ($CI->email->send()) {
-                return TRUE;
-            } else {
-                return FALSE;
-            }
-            
-        }else{
-            $CI->load->library('Sendmail');
-            $mail = new PHPMailer(); // create a new object
-            $mail->IsSMTP(); // enable SMTP
-            $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-            $mail->SMTPAuth = true; // authentication enabled
-            $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for GMail
-            $mail->Host = "smtp.gmail.com";
-            $mail->Port = 465; // or 587
-            $mail->IsHTML(true);
-            $mail->Username = "erp@kyisolutions.com";//ankit2@thealternativeaccount.com    OR   test.thealternativeaccount@gmail.com";
-            $mail->Password = "kyi@1234";                 //developer@thealternativeaccount1
-            
-            
-            //
-            //$mail->SetFrom($email_data['from'],$email_data['sender_name'],0);
+        $CI->load->library('Sendmail');
+        $mail = new PHPMailer(); // create a new object
+        $mail->IsSMTP(); // enable SMTP
+        $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+        $mail->SMTPAuth = true; // authentication enabled
+        $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for GMail
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 465; // or 587
+        $mail->IsHTML(true);
+        $mail->Username = "erp@kyisolutions.com";//ankit2@thealternativeaccount.com    OR   test.thealternativeaccount@gmail.com";
+        $mail->Password = "kyi@1234";                 //developer@thealternativeaccount1
             $mail->Subject = $email_data['subject'];
             $data['message'] = $email_data['message'];
 			$data['order_details']   =   $order_template_data['order_details'];
@@ -872,7 +802,7 @@ if (!function_exists('_sendMailOrderConfirmPhpMailer')) {
                 $data['cmp_logo']   =   @currentuserinfo()->cmp_logo;
             }
         
-            $msg = $CI->load->view('email_templates/email_order_template', $data, true);
+            $msg = $CI->load->view('invoice_data/email_order_template', $data, true);
             //echo $msg;die;
             $mail->Body = $msg;
         
@@ -939,7 +869,7 @@ if (!function_exists('_sendMailOrderConfirmPhpMailer')) {
                 return FALSE;
 			
             }
-        }
+       
         
 
     }
@@ -1952,30 +1882,81 @@ if (!function_exists('_sendEmailNew')) {
 
     function _sendEmailNew($email_data) {
         $CI = &get_instance();
-        $CI->load->library('email');
-        $CI->email->set_mailtype("html");
-        $CI->email->from($email_data['from'], ucwords($email_data['sender_name']));
-        $CI->email->to($email_data['to']);
-        if (!empty($email_data['cc'])) {
-            $CI->email->cc($email_data['cc']);
-        }
-        if (!empty($email_data['bcc'])) {
-            $CI->email->bcc($email_data['bcc']);
-        }
-        if (!empty($email_data['file'])) {
-            $CI->email->attach($email_data['file']);
-        }
-        $CI->email->subject(ucfirst($email_data['subject']));
-        $data['message'] = $email_data['message'];
-        $msg = $CI->load->view('email_templates/send_mail', $data, true);
-        $data['message'] = $email_data['message'];
-        $msg = $CI->load->view('email_templates/send_mail', $data, true);
-        $CI->email->message($msg);
-        if ($CI->email->send()) {
+        $CI->db->select('ai.*, ai.id as invoice_id, ac.*, apt.*, emp.*, CONCAT(emp.first_name," ", emp.last_name) as emp_name');
+        $CI->db->where('ai.id',$email_data['randomData']);
+        $CI->db->join('am_clients ac','ac.client_id = ai.client_id','left');
+        $CI->db->join('am_payment_terms apt','apt.payment_term_id = ac.payment_term_id','left');
+        $CI->db->join('employee emp','emp.id = ai.consultant_id','left');
+        $data = $CI->db->get('aa_invoice ai')->row();
+        
+       // pr($data); 
+        $time=strtotime($data->start_date);
+        $month=date("F",$time);
+      
+    //     "Invoice For the Consulting Services :: ".$data->emp_name." For the Month Of ".$month.' :: Invoice NO: '.$data->invoice_index;
+    //     echo 'Hello <strong style="font-weight: bolder;font-size: 14px;">' . 'kjhkjhkjh' . ', </strong>
+    //     <br/>Your account has been created successfully
+    // <br/><strong style="font-weight: bolder;font-size: 14px;">Your OTP:</strong> ' . '5454' . '
+    //     <br/><strong style="font-weight: bolder;font-size: 14px;">To verify your account. Please use above one time password.</strong>    
+    // <br><br>Thanks,<br/>Track (The Rest Accounting Key)';
+    //     die;
+        $CI->load->library('Sendmail');
+        $mail = new PHPMailer(); // create a new object
+        $mail->IsSMTP(); // enable SMTP
+        $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+        $mail->SMTPAuth = true; // authentication enabled
+        $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 587; // or 587
+        $mail->IsHTML(true);
+        $mail->Username = "shobhit@strategisminc.com";//ankit2@thealternativeaccount.com    OR   test.thealternativeaccount@gmail.com";
+        $mail->Password = "welcomeshobhit123";                 //developer@thealternativeaccount1
+       
+        $mail->Subject = "Invoice For the Consulting Services :: ".$data->emp_name." For the Month Of ".$month.' :: Invoice NO: '.$data->invoice_index;
+       
+        $mail->Body = 'Hi Accounts Team,
+        <br/><br/><br/>Please find the attached Invoice for the Consultant '.$data->emp_name.' against the Invoice No: '.$data->invoice_index.' with attached approved timesheets enclosed'.'
+        <br/><br/><br/>Please remit the payment as per the due date.
+    <br><br><br/>
+    Thanks in advance
+    <br/>
+    With Regards
+    <br/>
+    Shobhit Gupta
+    <br/>
+    Strategism Inc.
+    <br/>
+    Direct : 510-455-4067 I mailto: shobhit@strategisminc.com
+    <br/>
+    39355 California St, Suite 300, Fremont CA 94538
+    <br/>
+    Changing Lives, Shaping Futures 
+    ';
+       
+    $mail->SetFrom('shobhit@strategisminc.com','System Generated Email',1);
+   
+    $mail->AddAddress($email_data['toEmail']);
+    
+    $mail->AddAttachment('./uploads/invoice_slips/'.$data->pdf_url);
+    
+    // $msg = $this->load->view('invoice_data/pdfs','',true);
+       
+    //    die;
+    //    $mail->Body = "ioioiopiopi";
+        
+        if($mail->Send()){
+            
+            $invoice_id = $data->invoice_id;
+            $up['isEmailSent'] = 'yes';
+            $CI->db->where('id',$invoice_id);
+            $query = $CI->db->update('aa_invoice',$up);
             return TRUE;
-        } else {
+        
+        }else{
             return FALSE;
+        
         }
+        echo $email->print_debugger();
     }
 	
 }
@@ -2021,6 +2002,23 @@ function approve_by_user_type($approve_by){
 	return $result->user_type;
 	
 }
+if (!function_exists('InvoiceIndex')) {
+function InvoiceIndex(){
+	$CI = &get_instance();
+	$CI->db->select('*');
+    $CI->db->order_by("invoice_index desc");
+    $result = $CI->db->get('aa_invoice');
+    $resp = $result->num_rows();
+    if($resp !== 0){
+        $resp = $result->row()->invoice_index;
+        $resp++;
+    }else{
+        $resp = 1001;
+    }
+   // pr($resp); 
+	return $resp;
+	
+}}
 
 // generate invoice
 
@@ -2028,20 +2026,28 @@ if (!function_exists('generate_kyi_invoice_pdf'))
 	{
 		function generate_kyi_invoice_pdf($dat)
 		{
-					//pr($dat['pdf_data']); die;
+            $CI = &get_instance();
+            $CI->db->select('ass.skill_name as skill_name, ai.*, ai.id as invoice_id, CONCAT(emp.first_name," ", emp.last_name) as emp_name, ac.*, apt.*, emp.*');
+            $CI->db->where('ai.id',$dat);
+            $CI->db->join('am_clients ac','ac.client_id = ai.client_id','left');
+            $CI->db->join('am_payment_terms apt','apt.payment_term_id = ac.payment_term_id','left');
+            $CI->db->join('employee emp','emp.id = ai.consultant_id','left');
+            $CI->db->join('aa_skills ass','ass.skill_id = emp.skills','left');
+            $data = $CI->db->get('aa_invoice ai')->row();
+                //	pr($data);
+                //  die;
 					//pr($dat['pdf_data']->campaign_id);die;
-					$data['result_pdf'] = $dat['pdf_data'];
+					//$data['result_pdf'] = $dat['result'];
 					//ob_start(); 
-					error_reporting(E_ALL);
-				$CI = &get_instance();
+				//	error_reporting(E_ALL);
 				require('./assets/TCPDF-master/tcpdf.php');	
 				// create new PDF document
 				$pdf = new tcpdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);		
 				// set document information
 				$pdf->SetCreator(PDF_CREATOR);
 				// set default header data
-				// $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH,PDF_HEADER_TITLE, null, array(0,64,255), array(0,64,128));
-				// $pdf->setFooterData(array(0,64,0), array(0,64,128));
+				$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH,PDF_HEADER_TITLE, null, array(0,0,0), array(0,64,128));
+				$pdf->setFooterData(array(0,64,0), array(0,64,128));
 
 				// set header and footer fonts
 				// $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -2087,11 +2093,11 @@ if (!function_exists('generate_kyi_invoice_pdf'))
 				// set text shadow effect
 				$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0, 'depth_h'=>0, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));	
 				// Print text using writeHTMLCell()
-				//$html = $CI->load->view('pdfs',true);
+			//	$html = $CI->load->view('pdfs',true);
 				 
 					$html = $CI->load->view('invoice_data/pdfs', $data, true);
 				 
-				//pr($html);die;
+		//	pr($html); die;
 				// ---------------------------------------------------------		
 				// Close and output PDF document
 				// This method has several options, check the source code documentation for more information.
@@ -2099,15 +2105,15 @@ if (!function_exists('generate_kyi_invoice_pdf'))
 				  // Print text using writeHTMLCell()
 				
 					$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-                    $random = rand(999,10000);
+                  //  $random = rand(999,10000);
 				// ---------------------------------------------------------
-					$filename= "invoice_number_{$random}.pdf";
+					$filename= $data->first_name."-".$data->invoice_index.".pdf";
+                //  echo $data->invoice_id;
 					// update created invoice name in database also
-					    $payment_id = $dat['pdf_data']->id;
-						$up['invoice_name'] = $filename;
-						$CI->db->where('id',$payment_id);
-						$query = $CI->db->update('am_billing',$up);
-					//pr($filename);die;
+					    $invoice_id = $data->invoice_id;
+						$up['pdf_url'] = $filename;
+						$CI->db->where('id',$invoice_id);
+						$query = $CI->db->update('aa_invoice',$up);
 					if (!is_dir('uploads/invoice_slips')) {
 						mkdir('./uploads/invoice_slips' , 0777, TRUE);
 
@@ -2117,7 +2123,7 @@ if (!function_exists('generate_kyi_invoice_pdf'))
 					   //pr($filelocation);  die; 
 
 					$fileNL = $filelocation."/".$filename;
-					 //pr($fileNL);die;   
+					//  pr($fileNL);die;   
 					 ob_end_clean();
 					 $pdf_string = $pdf->Output($fileNL, 'F');
 				 
@@ -2125,7 +2131,6 @@ if (!function_exists('generate_kyi_invoice_pdf'))
 		}
 		 	
 	}
-
 
 	
 	// get currency in words also
@@ -2159,8 +2164,8 @@ if (!function_exists('generate_kyi_invoice_pdf'))
         } else $str[] = null;
     }
     $Rupees = implode('', array_reverse($str));
-    $paise = ($decimal) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Paise' : '';
-    return ($Rupees ? $Rupees . 'Rupees ' : '') . $paise .'Only';
+    $paise = ($decimal) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Cents' : '';
+    return ($Rupees ? $Rupees . 'dollars ' : '') . $paise .'Only';
 }
 
 if(!function_exists('custompaging'))

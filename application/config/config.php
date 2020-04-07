@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/thealternativeaccount';
+$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/strategism';
 //$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/'; //rate-It
  $config['sendmailCI']  =   FALSE;
 /*
