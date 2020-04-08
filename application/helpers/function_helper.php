@@ -1960,6 +1960,43 @@ if (!function_exists('_sendEmailNew')) {
     }
 	
 }
+ 
+if (!function_exists('_sendEmailToForgot')) {
+
+    function _sendEmailToForgot($email_data) {
+        $CI = &get_instance();
+       
+        $CI->load->library('Sendmail');
+        $mail = new PHPMailer(); // create a new object
+        $mail->IsSMTP(); // enable SMTP
+        $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+        $mail->SMTPAuth = true; // authentication enabled
+        $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 587; // or 587
+        $mail->IsHTML(true);
+        $mail->Username = "shobhit@strategisminc.com";//ankit2@thealternativeaccount.com    OR   test.thealternativeaccount@gmail.com";
+        $mail->Password = "welcomeshobhit123";                 //developer@thealternativeaccount1
+       
+        $mail->Subject = $email_data['message']['header'];
+        // pr($email_data); 
+        // pr($email_data['message']); 
+        // die;
+        $mail->Body = $email_data['message']['body'];
+        $mail->SetFrom('shobhit@strategisminc.com','System Generated Email',1);
+        $mail->AddAddress($email_data['to']);
+    
+        if($mail->Send()){
+            return TRUE;
+        
+        }else{
+            return FALSE;
+        
+        }
+        echo $email->print_debugger();
+    }
+	
+}
 	
 	/**
  * get_salesperson and sales manager name

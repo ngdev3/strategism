@@ -209,6 +209,7 @@ public function emailsend(){
                         $email      =   $this->input->post('email',true);
                         $rs_data    =   $this->Auth_mod->forgot($token);            
 
+                      //  pr($rs_data); die;
                     if($rs_data['valid']){
                         $email_data['to']           =   $email;
                         $email_data['from']         =   ADMIN_EMAIL;
@@ -221,7 +222,7 @@ public function emailsend(){
            	
 										
         
-                _sendMailPhpMailer($email_data) ; 
+                    _sendEmailToForgot($email_data); 
                 
 
                     set_flashdata('success','Your Reset password link has been send to your Email Address.');

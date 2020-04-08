@@ -114,11 +114,11 @@ class Auth_mod extends CI_Model {
         $this->db->where("email", $email);
         $this->db->where("status", 'Active');
         $result	= $this->db->get($this->user_table);
-         //echo $this->db->last_query();die;
+        // echo $this->db->last_query();die;
         if ($result->num_rows() > 0) {
 		
             $userData       =	$result->row();						
-			if($userData->user_type==2 || $userData->user_type==3){
+			if($userData->user_type==1){
             $name           =	$userData->first_name . ' ' . $userData->last_name;
             //------------- secure encryption-------------------
             $updateData			=	array(
@@ -126,7 +126,7 @@ class Auth_mod extends CI_Model {
                                            'token'  =>  $token,
                                            'token_valid' => date('Y-m-d')
                                             );
-                         // pr($updateData); die;                  
+                      //   pr($updateData); die;                  
             $this->db->where('id', $userData->id);	
             $this->db->update($this->user_table,$updateData);
             
