@@ -227,7 +227,7 @@ class Skills extends CI_Controller {
     }
     /*End of function*/
     
-    function restoreData(){
+    function restoreData(){ 
         $arr =  json_decode($_POST['arr']);        
         $res = restoreData($arr);
         //$this->session->set_flashdata("alert",array("c"=>"s","m"=>"Data has been Restored"));

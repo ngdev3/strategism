@@ -4,7 +4,7 @@
                     <div class="container-fluid">
                         <!--<h4 class="c-grey-900 mT-10 mB-30"> List </h4>-->
                         <div class="row">
-                            <div class="masonry-item col-md-12">
+                            <div class="masonry-item col-md-12"> 
                                 <div class="bgc-white p-20 bd">
                                     <h6 class="c-grey-900">Add Job Type</h6>
                                      <?=get_flashdata();?>
