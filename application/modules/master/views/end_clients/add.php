@@ -6,7 +6,7 @@
                         <div class="row">
                             <div class="masonry-item col-md-12">
                                 <div class="bgc-white p-20 bd">
-                                    <h6 class="c-grey-900">Add Payment Term Days</h6>
+                                    <h6 class="c-grey-900">Add End Clients</h6>
                                      <?=get_flashdata();?>
                                     <div class="mT-30">
                                         <?php echo form_open_multipart('', array('class' => '', 'id' => 'ciatyform_id',)); ?>
@@ -17,7 +17,7 @@
                                                    <?php  $name = @$result->end_client_name;
                                                     $postvalue = @$_POST['end_client_name'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'end_client_name','maxlength'=>'25', 'class' => 'form-control', 'id' => 'end_client_name', 'placeholder' => 'End Client Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'end_client_name','maxlength'=>'150', 'class' => 'form-control', 'id' => 'end_client_name', 'placeholder' => 'End Client Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('end_client_name'); ?></div></label>
                                                 </div>
@@ -26,7 +26,7 @@
                                                    <?php  $name = @$result->end_client_location;
                                                     $postvalue = @$_POST['end_client_location'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'end_client_location','maxlength'=>'25', 'class' => 'form-control', 'id' => 'end_client_location', 'placeholder' => 'End Client Location', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'end_client_location','maxlength'=>'150', 'class' => 'form-control', 'id' => 'end_client_location', 'placeholder' => 'End Client Location', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('end_client_location'); ?></div></label>
                                                 </div>
@@ -38,7 +38,7 @@
                                                    <?php  $name = @$result->mobile_no;
                                                     $postvalue = @$_POST['mobile_no'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'mobile_no','maxlength'=>'25', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Mobile Number', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'mobile_no','maxlength'=>'150', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Mobile Number', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('mobile_no'); ?></div></label>
                                                 </div>
@@ -47,7 +47,7 @@
                                                    <?php  $name = @$result->email;
                                                     $postvalue = @$_POST['email'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'email','type'=>'email','maxlength'=>'25', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Email', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'email','type'=>'email','maxlength'=>'150', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Email', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('email'); ?></div></label>
                                                 </div>
@@ -59,7 +59,7 @@
                                                    <?php  $name = @$result->contact_person;
                                                     $postvalue = @$_POST['contact_person'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'contact_person','maxlength'=>'25', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Contact Person', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'contact_person','maxlength'=>'150', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Contact Person', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('contact_person'); ?></div></label>
                                                 </div>
@@ -68,7 +68,7 @@
                                                    <?php  $name = @$result->end_client_zipcode;
                                                     $postvalue = @$_POST['end_client_zipcode'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'end_client_zipcode','maxlength'=>'25', 'class' => 'form-control', 'id' => 'end_client_zipcode', 'placeholder' => 'Zip Code', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'end_client_zipcode','maxlength'=>'150', 'class' => 'form-control', 'id' => 'end_client_zipcode', 'placeholder' => 'Zip Code', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('end_client_zipcode'); ?></div></label>
                                                 </div>

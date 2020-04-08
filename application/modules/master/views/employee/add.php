@@ -17,7 +17,7 @@
                                                    <?php  $name = @$result->first_name;
                                                     $postvalue = @$_POST['first_name'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'first_name','maxlength'=>'25', 'class' => 'form-control', 'id' => 'first_name', 'placeholder' => 'First Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'first_name','maxlength'=>'150', 'class' => 'form-control', 'id' => 'first_name', 'placeholder' => 'First Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('first_name'); ?></div></label>
                                                 </div>
@@ -25,7 +25,7 @@
                                                     <label for="inputEmail4">Last Name *</label>
                                                    <?php  $name = @$result->last_name;
                                                     $postvalue = @$_POST['last_name'];
-                                                    echo form_input(array('name' => 'last_name','type'=>'text','maxlength'=>'25', 'class' => 'form-control', 'id' => 'last_name', 'placeholder' => 'Last Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'last_name','type'=>'text','maxlength'=>'150', 'class' => 'form-control', 'id' => 'last_name', 'placeholder' => 'Last Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('last_name'); ?></div></label>
                                                 </div>
@@ -70,7 +70,7 @@
                                                     <label for="inputEmail4">Pan Number*</label>
                                                    <?php  $name = @$result->pan_number;
                                                     $postvalue = @$_POST['pan_number'];
-                                                    echo form_input(array('name' => 'pan_number','type'=>'text','maxlength'=>'25', 'class' => 'form-control', 'id' => 'pan_number', 'placeholder' => 'Pan Number', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'pan_number','type'=>'text','maxlength'=>'150', 'class' => 'form-control', 'id' => 'pan_number', 'placeholder' => 'Pan Number', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('pan_number'); ?></div></label>
                                                 </div>
@@ -79,7 +79,7 @@
                                                     <label for="inputEmail4">Emp Code*</label>
                                                    <?php  $name = @$result->emp_code;
                                                     $postvalue = @$_POST['emp_code'];
-                                                    echo form_input(array('name' => 'emp_code','type'=>'text','maxlength'=>'25', 'class' => 'form-control', 'id' => 'emp_code', 'placeholder' => 'Emp Code', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'emp_code','type'=>'text','maxlength'=>'150', 'class' => 'form-control', 'id' => 'emp_code', 'placeholder' => 'Emp Code', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('emp_code'); ?></div></label>
                                                 </div>
@@ -97,7 +97,7 @@
                 
                                                       // pr($new_dates); die;
                                                        $postvalue = date('d-m-Y');//@$_POST['billing_date'];
-                                                        echo form_input(array('name' => 'dob', 'maxlength'=>'25', 'class' => 'form-control', 'id' => 'dob', 'placeholder' => 'Date of Birth', 'value' => !empty($name) ? $new_dates : $postvalue )); ?>
+                                                        echo form_input(array('name' => 'dob', 'maxlength'=>'150', 'class' => 'form-control', 'id' => 'dob', 'placeholder' => 'Date of Birth', 'value' => !empty($name) ? $new_dates : $postvalue )); ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('dob'); ?></div></label>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -108,7 +108,7 @@
                                                         $new_dates = date('d-m-Y', $middles);            
                 
                                                         $postvalue = date('d-m-Y');//@$_POST['billing_date'];
-                                                        echo form_input(array('name' => 'doj', 'maxlength'=>'25', 'class' => 'form-control', 'id'=>'doj', 'placeholder' => 'Date Of Joining', 'value' => !empty($name) ? $new_dates : $postvalue )); ?>
+                                                        echo form_input(array('name' => 'doj', 'maxlength'=>'150', 'class' => 'form-control', 'id'=>'doj', 'placeholder' => 'Date Of Joining', 'value' => !empty($name) ? $new_dates : $postvalue )); ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('doj'); ?></div></label>
                                                 </div>
                                             </div>
@@ -121,7 +121,7 @@
                                                     <label for="inputEmail4">Bank Name*</label>
                                                    <?php  $name = @$result->bank_name;
                                                     $postvalue = @$_POST['bank_name'];
-                                                    echo form_input(array('name' => 'bank_name','type'=>'text','maxlength'=>'25', 'class' => 'form-control', 'id' => 'bank_name', 'placeholder' => 'Bank Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'bank_name','type'=>'text','maxlength'=>'150', 'class' => 'form-control', 'id' => 'bank_name', 'placeholder' => 'Bank Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('bank_name'); ?></div></label>
                                                 </div>
@@ -135,7 +135,7 @@
                                                     <label for="inputEmail4">Account Number*</label>
                                                    <?php  $name = @$result->account_number;
                                                     $postvalue = @$_POST['account_number'];
-                                                    echo form_input(array('name' => 'account_number','type'=>'text','maxlength'=>'25', 'class' => 'form-control', 'id' => 'account_number', 'placeholder' => 'Account Number', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'account_number','type'=>'text','maxlength'=>'150', 'class' => 'form-control', 'id' => 'account_number', 'placeholder' => 'Account Number', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('account_number'); ?></div></label>
                                                 </div>
@@ -149,7 +149,7 @@
                                                    <?php  $name = @$result->mobile;
                                                     $postvalue = @$_POST['mobile'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'mobile','type'=>'number','maxlength'=>'25', 'class' => 'form-control', 'id' => 'mobile', 'placeholder' => 'Mobile Number', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'mobile','type'=>'number','maxlength'=>'150', 'class' => 'form-control', 'id' => 'mobile', 'placeholder' => 'Mobile Number', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('mobile'); ?></div></label>
                                                 </div>
@@ -159,7 +159,7 @@
                                                    <?php  $name = @$result->email;
                                                     $postvalue = @$_POST['email'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'email','type'=>'email','maxlength'=>'25', 'class' => 'form-control', 'id' => 'email', 'placeholder' => 'Email', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'email','type'=>'email','maxlength'=>'150', 'class' => 'form-control', 'id' => 'email', 'placeholder' => 'Email', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('email'); ?></div></label>
                                                 </div>
@@ -184,7 +184,7 @@
                                                   <?php  $name = @$result->details;
                                                    $postvalue = @$_POST['details'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                   echo form_input(array('name' => 'details','type'=>'text','maxlength'=>'25', 'class' => 'form-control', 'id' => 'details', 'placeholder' => 'Details', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                   echo form_input(array('name' => 'details','type'=>'text','maxlength'=>'150', 'class' => 'form-control', 'id' => 'details', 'placeholder' => 'Details', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                 ?>
                                                   <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('details'); ?></div></label>
                                                </div>

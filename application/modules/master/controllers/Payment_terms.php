@@ -205,7 +205,7 @@ class Payment_terms extends CI_Controller {
                 $nestedData[]   =   $j;
                 
                 // $nestedData[]   =   $row["city_name"];
-                $nestedData[]   =   $row["term_days"];
+                $nestedData[]   =   $row["term_days"].' Days';
                 $nestedData[]   =   $row["status"];	
                 $state_id        =   $row['payment_term_id'];
                 $nestedData[]   =   $this->load->view("payment_terms/_action", array("row" => $row), true);

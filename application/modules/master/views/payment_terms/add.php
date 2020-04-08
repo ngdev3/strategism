@@ -18,16 +18,16 @@
                                                    <?php  $name = @$result->term_days;
                                                     $postvalue = @$_POST['payment_term_days'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'payment_term_days','type'=>'number','maxlength'=>'25', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Add Payment Terms Days', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'payment_term_days','type'=>'number','maxlength'=>'150', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Add Payment Terms Days', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('payment_term_days'); ?></div></label>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputState2">Status*</label>
                                                         <select id="inputState2" class="form-control" name="status">
-                                                            <option value="Active">Active</option>
-                                                            <option value="Inactive">Inactive</option>
-                                                           
+                                                        <option <?php if(@$result->status == 'Active') echo "selected";?> value="Active">Active</option>
+                                                            <option <?php if(@$result->status == 'Inactive') echo "selected";?> value="Inactive">Inactive</option>
+                                                        
                                                         </select>
                                                 
                                                 </div> 

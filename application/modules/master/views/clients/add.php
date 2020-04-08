@@ -17,7 +17,7 @@
                                                    <?php  $name = @$result->client_name;
                                                     $postvalue = @$_POST['client_name'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'client_name','maxlength'=>'25', 'class' => 'form-control', 'id' => 'client_name', 'placeholder' => 'End Client Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'client_name','maxlength'=>'150', 'class' => 'form-control', 'id' => 'client_name', 'placeholder' => 'End Client Name', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('client_name'); ?></div></label>
                                                 </div>
@@ -69,7 +69,7 @@
                                                    <?php  $name = @$result->email;
                                                     $postvalue = @$_POST['email'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'email','type'=>'email','maxlength'=>'25', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Email', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'email','type'=>'email','maxlength'=>'150', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Email', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('email'); ?></div></label>
                                                 </div>
@@ -81,7 +81,7 @@
                                                    <?php  $name = @$result->contact_person;
                                                     $postvalue = @$_POST['contact_person'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'contact_person','maxlength'=>'25', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Contact Person', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'contact_person','maxlength'=>'150', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Contact Person', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('contact_person'); ?></div></label>
                                                 </div>
@@ -90,18 +90,27 @@
                                                    <?php  $name = @$result->client_zipcode;
                                                     $postvalue = @$_POST['client_zipcode'];
 //                                                    $val = !empty($postvalue)? $postvalue:$name;
-                                                    echo form_input(array('name' => 'client_zipcode','maxlength'=>'25', 'class' => 'form-control', 'id' => 'client_zipcode', 'placeholder' => 'Zip Code', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                    echo form_input(array('name' => 'client_zipcode','maxlength'=>'150', 'class' => 'form-control', 'id' => 'client_zipcode', 'placeholder' => 'Zip Code', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
                                                  ?>
                                                    <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('client_zipcode'); ?></div></label>
                                                 </div>
                                             </div>
                                             <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                    <label for="inputEmail4">Client Address *</label>
+                                                   <?php  $name = @$result->client_address;
+                                                    $postvalue = @$_POST['client_address'];
+//                                                    $val = !empty($postvalue)? $postvalue:$name;
+                                                    echo form_input(array('name' => 'client_address','maxlength'=>'2050', 'class' => 'form-control', 'id' => 'cate_id', 'placeholder' => 'Client Address', 'value' => !empty($postvalue) ? $postvalue : $name ,'onkeyup'=>'validate_character(this)'));
+                                                 ?>
+                                                   <label  class="error"><div class="help-block" style="color:red"> <?php echo form_error('client_address'); ?></div></label>
+                                                </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputState2">Status*</label>
                                                         <select id="inputState2" class="form-control" name="status">
-                                                            <option value="Active">Active</option>
-                                                            <option value="Inactive">Inactive</option>
-                                                           
+                                                        <option <?php if(@$result->status == 'Active') echo "selected";?> value="Active">Active</option>
+                                                        <option <?php if(@$result->status == 'Inactive') echo "selected";?> value="Inactive">Inactive</option>
+
                                                         </select>
                                                 
                                                 </div> 
@@ -112,7 +121,7 @@
                                                    <div class="peer"> 
                                                    
                                                    <button type="submit" class="btn btn-primary"> Submit </button>
-                                                   <a href="<?php echo base_url('master/consultant/');?>"><button type="button" class="btn btn-primary"> Cancel </button></a>
+                                                   <a href="<?php echo base_url('master/clients/');?>"><button type="button" class="btn btn-primary"> Cancel </button></a>
 
                                                    
                                                    </div>

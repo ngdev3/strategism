@@ -57,11 +57,11 @@ class Clients extends CI_Controller {
     public function add() {
          
         if (isPostBack()) {
-         //  pr($_POST); die;
-            $this->form_validation->set_rules('client_name', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('end_client_id', 'Payment Terms Days',  'trim|required');
+          pr($_POST); die;
+            $this->form_validation->set_rules('client_name', 'Client Name',  'trim|required');
+            $this->form_validation->set_rules('end_client_id', 'End Client',  'trim|required');
             $this->form_validation->set_rules('payment_term_id', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('client_zipcode', 'Payment Terms Days',  'trim|required');
+            $this->form_validation->set_rules('client_zipcode', 'Client Zipcode',  'trim|required');
             $this->form_validation->set_rules('status', 'Status', 'required');
             if ($this->form_validation->run() == FALSE) {
                 
@@ -127,18 +127,18 @@ class Clients extends CI_Controller {
         $state_id = ID_decode($id);
         if (isPostBack()) {
             $state_id = ID_decode($id);
-            $this->form_validation->set_rules('client_name', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('end_client_id', 'Payment Terms Days',  'trim|required');
+            $this->form_validation->set_rules('client_name', 'Client Name',  'trim|required');
+            $this->form_validation->set_rules('end_client_id', 'End Client',  'trim|required');
             $this->form_validation->set_rules('payment_term_id', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('client_zipcode', 'Payment Terms Days',  'trim|required');
+            $this->form_validation->set_rules('client_zipcode', 'Client Zipcode',  'trim|required');
             $this->form_validation->set_rules('status', 'Status', 'required');
-          
+           
             if ($this->form_validation->run() == FALSE) {
                 
             } else {
                 
                 $this->clients_mod->edit($state_id);
-                set_flashdata('success', 'End Client updated successfully');
+                set_flashdata('success', 'Client updated successfully');
                 redirect('/master/clients');
             }
         }
