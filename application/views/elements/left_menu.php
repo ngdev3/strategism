@@ -14,6 +14,8 @@ if(!empty($_SESSION['user_type'])){
 		<ul class="dropdown-menu">
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'job_type'){echo 'btn_active';} ?>" href="<?= base_url('master/job_type')?>">Job Type</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'skills'){echo 'btn_active';} ?>" href="<?= base_url('master/skills')?>">Skills</a></li>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'visa_type'){echo 'btn_active';} ?>" href="<?= base_url('master/visa_type')?>">Visa Type</a></li>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'project_durations'){echo 'btn_active';} ?>" href="<?= base_url('master/project_durations')?>">Project Duration</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'payment_terms'){echo 'btn_active';} ?>" href="<?= base_url('master/payment_terms')?>">Payment Terms</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'end_clients'){echo 'btn_active';} ?>" href="<?= base_url('master/end_clients')?>">End Clients</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'clients'){echo 'btn_active';} ?>" href="<?= base_url('master/clients')?>">Clients</a></li>
