@@ -1,7 +1,7 @@
 <?php
 
-class Clients_mod extends CI_Model {
-    public $table = "am_clients";
+class Job_type_mod extends CI_Model {
+    public $table = "aa_job_type";
     function __construct() {
         parent::__construct();
         
@@ -18,7 +18,7 @@ class Clients_mod extends CI_Model {
     function getdata() {
         $CI = &get_instance();
         $CI->db->select();
-        $CI->db->from('am_end_clients');
+        $CI->db->from($this->table);
         $CI->db->where('status', 'Active');
 
         $query = $CI->db->get();
@@ -33,7 +33,7 @@ class Clients_mod extends CI_Model {
         $CI = &get_instance();
         $CI->db->select($attributes);
         $CI->db->from($table);
-        $CI->db->where('end_client_id', $id);
+        $CI->db->where('job_type_id', $id);
         $CI->db->where('status', 'active');
         $query = $CI->db->get();
         if ($query->num_rows()) {
@@ -45,54 +45,25 @@ class Clients_mod extends CI_Model {
 //  THIS FUNCTION DELETE city DATA
     function delete_city($id) {
         $data['status'] = 'Delete';
-        $this->db->where('client_id', $id);
+        $this->db->where('job_type_id', $id);
         $this->db->update($this->table, $data);
         return true;
     }
 
 //  THIS FUNCTION EDIT city DATA
     function edit($id) {
-       
-        // $postdata = array(
-        //     'end_client_name'        => $_POST['end_client_name'],           
-        //     'end_client_location'        => $_POST['end_client_location'],           
-        //     'mobile_no'        => $_POST['mobile_no'],           
-        //     'email'        => $_POST['email'],           
-        //     'contact_person'        => $_POST['contact_person'],           
-        //     'end_client_zipcode'        => $_POST['end_client_zipcode'],           
-        //     'status'            => $_POST['status'],  
-        //     'updated_date' =>          date("Y-m-d h:i:s")      
-        // );
-
-       // pr($_POST); die;
-        $postdata = array(
-            'client_address'               => $_POST['client_address'],           
-            'client_name'               => $_POST['client_name'],           
-            'end_client_id'             => $_POST['end_client_id'],           
-            'payment_term_id'           => $_POST['payment_term_id'],           
-            'email'                     =>$_POST['email'],           
-            'contact_person'            =>$_POST['contact_person'],           
-            'client_zipcode'            =>$_POST['client_zipcode'],           
-            'status'                    =>$_POST['status'],
-            'updated_date' =>          date("Y-m-d h:i:s")                     
-        );
-      
-
-        $this->db->where('client_id', $id);
-
-
-        $this->db->update($this->table, $postdata);
+        $data['job_type_id'] = $id;//$this->input->post('state_name');
+        $data['job_type'] = $this->input->post('job_type');
+        $data['status'] = $this->input->post('status');
+        $data['updated_date'] = date("Y-m-d h:i:s");
+        $this->db->where('job_type_id', $id);
+        $this->db->update($this->table, $data);
     }
 
 //  THIS FUNCTION VIEW city DATA
     function view($id) {
-     
-        $this->db->select('wct.*, aec.*, ptid.*');
-        $this->db->from($this->table.' as wct');
-        $this->db->where('wct.client_id', $id);
-        $this->db->join('am_end_clients aec','wct.end_client_id = aec.end_client_id','left');
-        $this->db->join('am_payment_terms ptid','ptid.payment_term_id = wct.payment_term_id','left');
-         
+        $this->db->select('*');
+        $this->db->where('job_type_id', $id);
         return $query = $this->db->get($this->table)->row();
     }
 
@@ -100,9 +71,6 @@ class Clients_mod extends CI_Model {
         $requestData = $this->input->post(null, true);
 
         $this->db->select('*');
-        
-       // $this->db->join('am_end_clients aec','wct.end_client_id = aec.end_client_id','left');
-       // $this->db->join('am_payment_terms ptid','ptid.payment_term_id = wct.payment_term_id','left');
         
         if (isset($_GET['status'])) {
             $this->db->where("status =",$_GET["status"]);
@@ -113,7 +81,7 @@ class Clients_mod extends CI_Model {
         
         if (!empty($requestData['search']['value'])) {
             $search_val = $requestData['search']['value'];
-            $this->db->where("(client_name  LIKE '%$search_val%' OR  status  LIKE '%$search_val%')");
+            $this->db->where("(job_type  LIKE '%$search_val%' OR  status  LIKE '%$search_val%')");
         }
         return $query = $this->db->get($this->table);
     }
@@ -122,17 +90,17 @@ class Clients_mod extends CI_Model {
         $requestData = $this->input->post(null, true);
         // pr($requestData); die;
         $columns = array(
-            1 => 'wct.client_name',
+            1 => 'wct.job_type',
+            2 => 'wct.status'
         );
         
-        $this->db->select('wct.*, aec.*, ptid.*');
+        $this->db->select('wct.*');
         $this->db->from($this->table.' as wct');
-        $this->db->join('am_end_clients aec','wct.end_client_id = aec.end_client_id','left');
-        $this->db->join('am_payment_terms ptid','ptid.payment_term_id = wct.payment_term_id','left');
+       //  $this->db->join($this->table.' wcntry','wct.job_type_id=wcntry.job_type_id','left');
          
         if (!empty($requestData['search']['value'])) {
             $search_val = $requestData['search']['value'];            
-            $this->db->where("(wct.client_name LIKE '%$search_val%' OR wct.status  LIKE '%$search_val%')");
+            $this->db->where("(wct.job_type LIKE '%$search_val%' OR wct.status  LIKE '%$search_val%')");
         }
         
         if (isset($_GET['status'])) {
@@ -147,7 +115,7 @@ class Clients_mod extends CI_Model {
             $column_name = $columns[@$requestData['order'][0]['column']];
             $this->db->order_by("$column_name", "$order");
         } else {
-            $this->db->order_by("wct.end_client_id", "desc");
+            $this->db->order_by("wct.job_type_id", "desc");
         }
         if (@$requestData['length'] && $requestData['length'] != '-1') {
             $this->db->limit($requestData['length'], $requestData['start']);
@@ -172,8 +140,8 @@ class Clients_mod extends CI_Model {
      */
     function check_preexistance($id, $city_name) {
         $this->db->select('*');
-        $this->db->where('end_client_id !=', $id);
-        $this->db->where('term_days ', $city_name);
+        $this->db->where('job_type_id !=', $id);
+        $this->db->where('job_type ', $city_name);
         $query = $this->db->get($this->table);
       //  echo $this->db->last_query();
         return $query->num_rows();

@@ -63,7 +63,9 @@ class Payment_terms extends CI_Controller {
                 
             } else {                
                 $postdata = array(
-                    'term_days'        => $_POST['payment_term_days'],           
+                    'term_days'        => $_POST['payment_term_days'], 
+                    'added_by'                      => $this->session->userdata('userinfo')->id,   
+                              
                     'status'            => $_POST['status'],                    
                 );
                 $this->payment_terms_mod->add($postdata);

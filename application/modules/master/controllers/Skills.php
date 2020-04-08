@@ -14,14 +14,14 @@ if (!defined('BASEPATH'))
  * @company             thealternativeaccount Inc
  * @since		Version 1.0
  */
-class Clients extends CI_Controller {
+class Skills extends CI_Controller {
 
     /**
      * Constructor
      */
     function __construct() {
         parent::__construct();
-        $this->load->model('clients_mod');
+        $this->load->model('skills_mod');
         is_adminprotected();
 		validate_admin_login();
         // is_protected();
@@ -38,11 +38,10 @@ class Clients extends CI_Controller {
     public function index() {
         $data['title'] = Project;
         $data['page_title'] = 'State';
-        $page = 'clients/listing';
+        $page = 'skills/listing';
         $data['page'] = $page;
        // $d = array('id' => 'state_id', 'name' => 'name', 'status' => 'status');
-        $data['citydata'] = $this->clients_mod->getdata();
-        // pr($data); die;
+        $data['citydata'] = $this->skills_mod->getdata();
         _layout($data);
     }
 
@@ -57,41 +56,31 @@ class Clients extends CI_Controller {
     public function add() {
          
         if (isPostBack()) {
-         // pr($_POST); die;
-            $this->form_validation->set_rules('client_address', 'Client  Address',  'trim|required');
-            $this->form_validation->set_rules('client_name', 'Client Name',  'trim|required');
-            $this->form_validation->set_rules('end_client_id', 'End Client',  'trim|required');
-            $this->form_validation->set_rules('payment_term_id', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('client_zipcode', 'Client Zipcode',  'trim|required');
+           // pr($_POST); die;
+            $this->form_validation->set_rules('skill_name', 'Skill Name',  'trim|required');
             $this->form_validation->set_rules('status', 'Status', 'required');
             if ($this->form_validation->run() == FALSE) {
                 
             } else {                
                 $postdata = array(
-                    'client_address'               => $_POST['client_address'],           
-                    'client_name'               => $_POST['client_name'],           
-                    'end_client_id'             => $_POST['end_client_id'],           
-                    'payment_term_id'           => $_POST['payment_term_id'],           
-                    'email'                     =>$_POST['email'],           
-                    'contact_person'            =>$_POST['contact_person'],           
-                    'client_zipcode'            =>$_POST['client_zipcode'],           
-                    'status'                    =>$_POST['status'],  
-                    'added_by'                      => $this->session->userdata('userinfo')->id 
+                    'skill_name'        => $_POST['skill_name'], 
+                    'added_by'                      => $this->session->userdata('userinfo')->id,   
+                              
+                    'status'            => $_POST['status'],                    
                 );
-                $this->clients_mod->add($postdata);
-                set_flashdata('success', 'Clients added successfully');
-                redirect('/master/clients');
+                $this->skills_mod->add($postdata);
+                set_flashdata('success', 'New Skills added successfully');
+                redirect('/master/skills');
             }
         }
-        $titleKey = 'Clients';
-        $data['title'] = 'Track (The Rest Accounting Key) | '.$titleKey;
-        $data['page_title'] = $titleKey;
-        $data['breadcum'] = array("dashboard/" => 'Home', '' => $titleKey);
-        $page = 'clients/add';        
-        $d = array('table' => 'am_end_clients','status'=>'status','column3'=>'Active');
-        $k = array('table' => 'am_payment_terms','status'=>'status','column3'=>'Active');
+        
+        $title = 'Skills';
+        $data['title'] = 'Track (The Rest Accounting Key) | '.$title;
+        $data['page_title'] = $title;
+        $data['breadcum'] = array("dashboard/" => 'Home', '' => $title);
+        $page = 'skills/add';        
+        $d = array('table' => 'aa_skills','status'=>'status','column3'=>'Active');
         $data['countrydata'] = getdata($d);         
-        $data['payment_terms'] = getdata($k);         
         $data['page'] = $page;
         // pr( $data); die;
         _layout($data);
@@ -108,8 +97,8 @@ class Clients extends CI_Controller {
     public function delete_city() {
         $post = $this->input->post('id');
         if (!empty($post)) {
-            if ($this->clients_mod->delete_city($post)) {                
-                set_flashdata('success', 'Client deleted successfully');
+            if ($this->skills_mod->delete_city($post)) {                
+                set_flashdata('success', 'Skills deleted successfully');
                 //redirect('/city');
             } else {
                 set_flashdata('success', 'Some error occured');
@@ -126,42 +115,41 @@ class Clients extends CI_Controller {
      * @return	html data
      */
     public function edit($id = "") {
-      // pr($_POST);die;
+      //  pr($_POST);die;
         $state_id = ID_decode($id);
         if (isPostBack()) {
             $state_id = ID_decode($id);
-            $this->form_validation->set_rules('client_address', 'Client  Address',  'trim|required');
-            $this->form_validation->set_rules('client_name', 'Client Name',  'trim|required');
-            $this->form_validation->set_rules('end_client_id', 'End Client',  'trim|required');
-            $this->form_validation->set_rules('payment_term_id', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('client_zipcode', 'Client Zipcode',  'trim|required');
+            $this->form_validation->set_rules('skill_name', 'Skills Name',  'trim|required');
             $this->form_validation->set_rules('status', 'Status', 'required');
            
             if ($this->form_validation->run() == FALSE) {
                 
             } else {
-                
-                $this->clients_mod->edit($state_id);
-                set_flashdata('success', 'Client updated successfully');
-                redirect('/master/clients');
+                /*check name for pre existance*/
+                $city_name        =   $this->input->post('skill_name');
+                $check_data         =   $this->skills_mod->check_preexistance($state_id,$city_name);
+                /*End of this*/
+                if($check_data)
+                {
+                    set_flashdata('error', 'Skills already exist.');
+                    redirect("/master/skills/edit/$id");
+                }else{
+                    $this->skills_mod->edit($state_id);
+                    set_flashdata('success', 'Skills updated successfully');
+                    redirect('/master/skills');
+                }
             }
         }
-        $titleKey = 'Edit End Clients';
-        $UpdatetitleKey = 'Edit End Clients';
-        // $d = array('table' => 'am_clients','status'=>'status','column3'=>'Active');
-        // $data['countrydata'] = getdata($d);
-        $data['result'] = $this->clients_mod->view($state_id);
-        $d = array('table' => 'am_end_clients','status'=>'status','column3'=>'Active');
-        $k = array('table' => 'am_payment_terms','status'=>'status','column3'=>'Active');
-        $data['countrydata'] = getdata($d);         
-        $data['payment_terms'] = getdata($k);         
-               
-        $data['title'] = 'Track (The Rest Accounting Key)  | '.$titleKey;
-        $data['page_title'] = $UpdatetitleKey;
+        $d = array('table' => 'aa_skills','status'=>'status','column3'=>'Active');
+        $data['countrydata'] = getdata($d);
+        $data['result'] = $this->skills_mod->view($state_id);        
+        $data['title'] = 'Track (The Rest Accounting Key)  | Edit State';
+        $data['page_title'] = 'Update State';
 
-        $data['breadcum'] = array("dashboard/" => 'Home', '' =>  $UpdatetitleKey);
-        $page = 'clients/add';
+        $data['breadcum'] = array("dashboard/" => 'Home', '' => 'Update State');
+        $page = 'skills/add';
         $data['page'] = $page;
+        // pr($data); die;
         _layout($data);
     }
 
@@ -172,12 +160,12 @@ class Clients extends CI_Controller {
      public function view($id = "") {
         $state_id = ID_decode($id);
         if (!empty($state_id)) {
-            $data['result'] = $this->clients_mod->view(@$state_id);
+            $data['result'] = $this->skills_mod->view(@$state_id);
             $data['title'] = 'Track (The Rest Accounting Key) | State View';
             $data['page_title'] = 'State View';
             $data['breadcum'] = array("dashboard/" => 'Home', '' => 'State View');
-            $page = 'clients/view';
-          // pr($data);die;
+            $page = 'skills/view';
+//            pr($data);die;
             $data['page'] = $page;
             _layout($data);
         }
@@ -198,15 +186,15 @@ class Clients extends CI_Controller {
     public function view_all() {
         $requestData    = $this->input->post(null,true);
         /*Counting warehouse data*/
-        $query          =   $this->clients_mod->count_city_data();
+        $query          =   $this->skills_mod->count_city_data();
         $totalData      =   $query->num_rows();
 // pr($query->num_rows()); die;
         $totalFiltered  =   $totalData;  //
         /*End of counting warehouse data*/
         
        // $d = array('id' => 'state_id', 'name' => 'name', 'status' => 'status');
-        $citydata = $this->clients_mod->get_city_data(); 
-        //pr($citydata);die;       
+        $citydata = $this->skills_mod->get_city_data(); 
+        // pr($citydata);die;       
         $data   =   array();
         if(count($citydata)>0)
         {
@@ -220,15 +208,10 @@ class Clients extends CI_Controller {
                 $nestedData[]   =   $j;
                 
                 // $nestedData[]   =   $row["city_name"];
-                $nestedData[]   =   $row["client_name"];
-                $nestedData[]   =   $row["end_client_name"];
-                $nestedData[]   =   $row["term_days"].' Days';
-                // $nestedData[]   =   $row["mobile_no"];
-                // $nestedData[]   =   $row["email"];
-                // $nestedData[]   =   $row["contact_person"];
+                $nestedData[]   =   $row["skill_name"];
                 $nestedData[]   =   $row["status"];	
-                $state_id        =   $row['end_client_id'];
-                $nestedData[]   =   $this->load->view("clients/_action", array("row" => $row), true);
+                $state_id        =   $row['skill_id'];
+                $nestedData[]   =   $this->load->view("skills/_action", array("row" => $row), true);
                 $data[]         =   $nestedData;
             }
         }

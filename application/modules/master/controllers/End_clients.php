@@ -57,9 +57,9 @@ class End_clients extends CI_Controller {
          
         if (isPostBack()) {
         //    pr($_POST); die;
-            $this->form_validation->set_rules('end_client_name', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('end_client_location', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('end_client_zipcode', 'Payment Terms Days',  'trim|required');
+            $this->form_validation->set_rules('end_client_name', 'End Client Name',  'trim|required');
+            $this->form_validation->set_rules('end_client_location', 'End Client Location',  'trim|required');
+            $this->form_validation->set_rules('end_client_zipcode', 'End Client Zipcode',  'trim|required');
             $this->form_validation->set_rules('status', 'Status', 'required');
             if ($this->form_validation->run() == FALSE) {
                 
@@ -71,7 +71,9 @@ class End_clients extends CI_Controller {
                     'email'        => $_POST['email'],           
                     'contact_person'        => $_POST['contact_person'],           
                     'end_client_zipcode'        => $_POST['end_client_zipcode'],           
-                    'status'            => $_POST['status'],                    
+                    'status'            => $_POST['status'],
+                    'added_by'                      => $this->session->userdata('userinfo')->id 
+
                 );
                 $this->end_clients_mod->add($postdata);
                 set_flashdata('success', 'End Clients added successfully');
@@ -123,10 +125,10 @@ class End_clients extends CI_Controller {
         $state_id = ID_decode($id);
         if (isPostBack()) {
             $state_id = ID_decode($id);
-            $this->form_validation->set_rules('end_client_name', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('end_client_location', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('end_client_zipcode', 'Payment Terms Days',  'trim|required');
-            $this->form_validation->set_rules('status', 'Status', 'required');
+            $this->form_validation->set_rules('end_client_name', 'End Client Name',  'trim|required');
+            $this->form_validation->set_rules('end_client_location', 'End Client Location',  'trim|required');
+            $this->form_validation->set_rules('end_client_zipcode', 'End Client Zipcode',  'trim|required');
+             $this->form_validation->set_rules('status', 'Status', 'required');
           
             if ($this->form_validation->run() == FALSE) {
                 

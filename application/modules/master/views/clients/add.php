@@ -6,7 +6,7 @@
                         <div class="row">
                             <div class="masonry-item col-md-12">
                                 <div class="bgc-white p-20 bd">
-                                    <h6 class="c-grey-900">Add Payment Term Days</h6>
+                                    <h6 class="c-grey-900">Add Client</h6>
                                      <?=get_flashdata();?>
                                     <div class="mT-30">
                                         <?php echo form_open_multipart('', array('class' => '', 'id' => 'ciatyform_id',)); ?>

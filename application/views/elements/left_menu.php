@@ -12,6 +12,8 @@ if(!empty($_SESSION['user_type'])){
 	<li class="nav-item dropdown open <?php if($uri1 == 'master'){echo 'open';} ?>">
 		<a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-red-500 ti-files"></i> </span><span class="title">Tracking</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
 		<ul class="dropdown-menu">
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'job_type'){echo 'btn_active';} ?>" href="<?= base_url('master/job_type')?>">Job Type</a></li>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'skills'){echo 'btn_active';} ?>" href="<?= base_url('master/skills')?>">Skills</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'payment_terms'){echo 'btn_active';} ?>" href="<?= base_url('master/payment_terms')?>">Payment Terms</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'end_clients'){echo 'btn_active';} ?>" href="<?= base_url('master/end_clients')?>">End Clients</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'clients'){echo 'btn_active';} ?>" href="<?= base_url('master/clients')?>">Clients</a></li>

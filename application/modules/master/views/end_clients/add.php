@@ -77,9 +77,9 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="inputState2">Status*</label>
                                                         <select id="inputState2" class="form-control" name="status">
-                                                            <option value="Active">Active</option>
-                                                            <option value="Inactive">Inactive</option>
-                                                           
+                                                        <option <?php if(@$result->status == 'Active') echo "selected";?> value="Active">Active</option>
+                                                        <option <?php if(@$result->status == 'Inactive') echo "selected";?> value="Inactive">Inactive</option>
+
                                                         </select>
                                                 
                                                 </div> 
