@@ -103,7 +103,7 @@ class Invoice extends CI_Controller {
                generate_kyi_invoice_pdf($rep);
                 $red['data'] = $rep;
                 $red['randomData'] = $rep;
-                $red['toEmail'] = 'rajatinvoice@gmail.com';
+                $red['toEmail'] = 'shobhit@strategisminc.com';
                _sendEmailNew($red);
               
                 set_flashdata('success', 'Invoice Generated successfully');
@@ -177,7 +177,7 @@ class Invoice extends CI_Controller {
                 generate_kyi_invoice_pdf($rep);
                 $red['data'] = $rep;
                 $red['randomData'] = $rep;
-                $red['toEmail'] = 'rajatinvoice@gmail.com';
+                $red['toEmail'] = 'shobhit@strategisminc.com';
                _sendEmailNew($red);
               
                 set_flashdata('success', 'Invoice updated successfully');
