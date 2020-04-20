@@ -22,4 +22,8 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('invoice_data/pdfs');
 	}
+	public function privacy()
+	{
+		$this->load->view('privacy');
+	}
 }
