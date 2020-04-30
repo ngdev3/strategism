@@ -3,6 +3,7 @@
 $uri1 = @uri_segment(1);
 $uri2 = @uri_segment(2);
 $uri3 = @uri_segment(3);
+// pr($_SESSION['userinfo']->special_permission); die;
 if(!empty($_SESSION['user_type'])){
 	if($_SESSION['user_type'] == 1){
 		
@@ -12,6 +13,9 @@ if(!empty($_SESSION['user_type'])){
 	<li class="nav-item dropdown open <?php if($uri1 == 'master'){echo 'open';} ?>">
 		<a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-red-500 ti-files"></i> </span><span class="title">Tracking</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
 		<ul class="dropdown-menu">
+		<?php if($_SESSION['userinfo']->special_permission == 1){?>
+		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'template'){echo 'btn_active';} ?>" href="<?= base_url('master/template')?>">Template</a></li>
+		<?php }?>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'job_type'){echo 'btn_active';} ?>" href="<?= base_url('master/job_type')?>">Job Type</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'skills'){echo 'btn_active';} ?>" href="<?= base_url('master/skills')?>">Skills</a></li>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'visa_type'){echo 'btn_active';} ?>" href="<?= base_url('master/visa_type')?>">Visa Type</a></li>
