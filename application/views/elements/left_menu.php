@@ -12,7 +12,7 @@ if(!empty($_SESSION['user_type'])){
 	<li class="nav-item mT-30"><a class="sidebar-link" href="<?= base_url('admin/dashboard')?>" default><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
 	<li class="nav-item dropdown open <?php if($uri1 == 'master'){echo 'open';} ?>">
 		<a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-red-500 ti-files"></i> </span><span class="title">Tracking</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-		<ul class="dropdown-menu">
+		<ul class="dropdown-menu"> 
 		<?php if($_SESSION['userinfo']->special_permission == 1){?>
 		<li><a class="sidebar-link <?php if($uri1 == 'master' && $uri2 == 'template'){echo 'btn_active';} ?>" href="<?= base_url('master/template')?>">Template</a></li>
 		<?php }?>
